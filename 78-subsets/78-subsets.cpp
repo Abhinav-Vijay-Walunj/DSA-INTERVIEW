@@ -15,6 +15,7 @@ public:
         // temp.pop_back();
         solve(ind+1,n,nums,ans,temp);
        temp.pop_back();
+        // TO GETEMPTY FIRST AND COMMENT UNCOMMNET TO GET THE REVRSE ONE
         
     }
     vector<vector<int>> subsets(vector<int>& nums) {
