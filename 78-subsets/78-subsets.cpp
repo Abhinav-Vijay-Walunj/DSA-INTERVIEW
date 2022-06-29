@@ -9,12 +9,12 @@ public:
             ans.push_back(temp);
             return;
         }
-         temp.push_back(nums[ind]);
+         // temp.push_back(nums[ind]);
         solve(ind+1,n,nums,ans,temp);
-        
-        temp.pop_back();
+        temp.push_back(nums[ind]);
+        // temp.pop_back();
         solve(ind+1,n,nums,ans,temp);
-       
+       temp.pop_back();
         
     }
     vector<vector<int>> subsets(vector<int>& nums) {
