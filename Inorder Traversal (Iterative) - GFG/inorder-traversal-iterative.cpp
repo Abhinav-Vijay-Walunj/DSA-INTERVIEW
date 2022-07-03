@@ -98,30 +98,63 @@ class Solution {
 public:
     vector<int> inOrder(Node* root)
     {
+        vector<int> v;
+        
+        Node* cur=root;
+        
+        while(cur != NULL)
+        {
+            if(cur->left == NULL)
+            {
+                v.push_back(cur->data);
+                cur=cur->right;
+            }
+            else
+            {
+                Node* pre=cur->left;
+                while(pre->right && pre->right != cur)
+                {
+                    pre=pre->right;
+                }
+                if(pre->right == NULL)
+                {
+                    pre->right=cur;
+                    cur=cur->left;
+                }
+                else
+                {
+                    pre->right=NULL;
+                    v.push_back(cur->data);
+                    cur=cur->right;
+                }
+            }
+        }
+        return v;
+        /*
         stack<Node *> s;
     Node *curr = root;
 vector<int> v;
     while (curr != NULL || s.empty() == false)
     {
         /* Reach the left most Node of the
-           curr Node */
+           curr Node 
         while (curr !=  NULL)
         {
             /* place pointer to a tree node on
                the stack before traversing
-              the node's left subtree */
+              the node's left subtree 
             s.push(curr);
             curr = curr->left;
         }
 
-        /* Current must be NULL at this point */
+        /* Current must be NULL at this point 
         curr = s.top();
         s.pop();
         v.push_back(curr->data);
 
         /* we have visited the node and its
            left subtree.  Now, it's right
-           subtree's turn */
+           subtree's turn 
         curr = curr->right;
 
     } /* end of while */
@@ -153,7 +186,7 @@ vector<int> v;
         // }
         // return ans;
         //code here
-        return v;
+        // return v;
     }
 };
 
