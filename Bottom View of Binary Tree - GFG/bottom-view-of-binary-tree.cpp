@@ -105,7 +105,9 @@ class Solution {
         }
         
         map<int,int> mp;
+        // to store line,value at that line and as we go down we update it as new come into our line
         queue<pair<Node*,int>> q;
+        // in queue in place of pushing just node we have to push on which line does it lie 
         q.push({root,0});
         
         while(!q.empty())
@@ -122,10 +124,12 @@ class Solution {
             if(node->left != NULL)
             {
                 q.push({node->left,line-1});
+                // on going left we get line-1
             }
             if(node->right != NULL)
             {
                 q.push({node->right,line+1});
+                // on going right we get line+1
             }
         }
         
