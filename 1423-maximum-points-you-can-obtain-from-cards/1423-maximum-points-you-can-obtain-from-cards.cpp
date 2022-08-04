@@ -7,8 +7,11 @@ public:
         for (int i = 0; i < k; i++) 
             total += cardPoints[i];
         ans = total;
-        for (int i = k - 1, j = n - 1; ~i; i--, j--)
-            total += cardPoints[j] - cardPoints[i], ans = max(ans, total);
+        for (int i = k - 1;i>=0; i--){
+            total -= cardPoints[i];
+            total+= cardPoints[n+i-k];
+            ans = max(ans, total);
+        }
         return ans;
     }
 };
